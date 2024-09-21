@@ -3,6 +3,8 @@ import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from .models import TelematicsData
 
+# Data fetching Using WebSockets (Telematics Devices & Sensors)
+# Define a consumer that listens for incoming WebSocket messages.
 class TelematicsConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         await self.accept()
