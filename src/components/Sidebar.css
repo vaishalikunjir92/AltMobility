@@ -1,0 +1,22 @@
+.sidebar {
+    width: 200px;
+    background-color: #f8f9fa;
+    padding: 15px;
+    height: calc(100vh - 70px); /* Adjust based on header height */
+    position: fixed;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sidebar li:hover {
+    background-color: #e2e6ea;
+}
