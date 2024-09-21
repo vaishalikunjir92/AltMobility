@@ -1,40 +1,59 @@
-.alerts {
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-}
-
-.alerts h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.alerts ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.alerts li {
-    padding: 15px;
-    margin: 10px 0;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.alerts li:hover {
-    background-color: #e2e6ea;
-}
-
-.severity {
-    font-weight: bold;
+.alerts .alert-tag {
+    display: inline-block;
     padding: 3px 8px;
-    border-radius: 3px;
+    border-radius: 15px;
     margin-right: 10px;
-}
-
-.severity.normal {
-    background-color: #28a745;
-    color: white;
-}
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  .alerts .critical-yellow {
+    background-color: #f2f200; /* Yellow */
+    color: #000000;
+  }
+  
+  .alerts .critical-orange {
+    background-color: #f2a600; /* Orange */
+    color: #000000;
+  }
+  
+  .alerts .critical-red {
+    background-color: #f20000; /* Red */
+    color: #ffffff;
+  }
+  
+  .alerts .non-critical-green {
+    background-color: #00f200; /* Green */
+    color: #000000;
+  }
+  
+  .alerts .critical {
+    background-color: #f20000; /* Red */
+    color: #ffffff;
+  }
+  
+  .alerts .non-critical {
+    background-color: #00f200; /* Green */
+    color: #000000;
+  }
+  
+  .alerts .alert-nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+  
+  .alerts .alert-nav button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .alerts .alert-nav button.active {
+    background-color: #e0e0e0;
+  }
+  
