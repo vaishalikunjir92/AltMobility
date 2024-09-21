@@ -10,6 +10,18 @@ import VehicleStatus from './components/VehicleStatus';
 
 const App = () => {
   const [page, setPage] = useState('dashboard');
+  /*useEffect(() => {
+    const socket = new WebSocket('ws://your-websocket-url');
+
+    socket.onmessage = (event) => {
+      const newAlert = JSON.parse(event.data);
+      setAlerts((prevAlerts) => [...prevAlerts, newAlert]);
+    };
+
+    return () => {
+      socket.close();
+    };
+  }, []);*/
 
   const renderPage = () => {
     switch (page) {
