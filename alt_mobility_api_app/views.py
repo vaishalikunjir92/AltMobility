@@ -1,5 +1,4 @@
 from rest_framework import viewsets
-from .models import VehicleData
 from .serializers import VehicleDataSerializer, AlertDataSerializer, AdditinalDataSerializer
 from django.shortcuts import render
 from celery import shared_task
@@ -38,6 +37,7 @@ def detect_anomalies(vehicle_data):
 @shared_task
 def send_notification(message):
     # Logic to send notification (e.g., email, SMS, push notification)
+    
     print(f"Notification: {message}")
 
 

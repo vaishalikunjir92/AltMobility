@@ -6,19 +6,19 @@ PRIORITY_CHOICES = [
     ('non_critical', 'Non-Critical')
 ]
 
-class VehicleData(models.Model):
-    vehicle_id = models.CharField(max_length=50)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    speed = models.FloatField()
-    engine_temp = models.FloatField()
-    location = models.CharField(max_length=100)  # Could also use a GeoField for geolocation
-    alert_type = models.CharField(max_length=100)
+# class VehicleData(models.Model):
+#     vehicle_id = models.CharField(max_length=50)
+#     timestamp = models.DateTimeField(auto_now_add=True)
+#     speed = models.FloatField()
+#     engine_temp = models.FloatField()
+#     location = models.CharField(max_length=100)  # Could also use a GeoField for geolocation
+#     alert_type = models.CharField(max_length=100)
 
-    priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default='non_critical')
-    impact = models.IntegerField(default=0)  # Scale of 1-10
+#     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default='non_critical')
+#     impact = models.IntegerField(default=0)  # Scale of 1-10
 
-    def __str__(self):
-        return f"Vehicle {self.vehicle_id} - {self.timestamp}"
+#     def __str__(self):
+#         return f"Vehicle {self.vehicle_id} - {self.timestamp}"
     
 class Alert(models.Model):
     id = models.AutoField(primary_key=True)  # id field with auto-increment behavior
