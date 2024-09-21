@@ -1,0 +1,30 @@
+-- Table: public.additionalalerts
+
+-- DROP TABLE IF EXISTS public.additionalalerts;
+
+CREATE TABLE IF NOT EXISTS public.additionalalerts
+(
+    id integer NOT NULL DEFAULT nextval('additionalalerts_id_seq'::regclass),
+    insurance_provider_issuer text COLLATE pg_catalog."default",
+    due_date date,
+    renewal_status boolean,
+    time_due integer,
+    policy_number text COLLATE pg_catalog."default",
+    offline_days integer,
+    idle_days integer,
+    min_cell_voltage numeric,
+    last_soc numeric,
+    last_seen timestamp without time zone,
+    days_since integer,
+    alert_id integer,
+    CONSTRAINT additionalalerts_pkey PRIMARY KEY (id),
+    CONSTRAINT additionalalerts_alert_id_fkey FOREIGN KEY (alert_id)
+        REFERENCES public.alerts (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.additionalalerts
+    OWNER to postgres;

@@ -1,0 +1,71 @@
+-- Table: public.vehicleinfo
+
+-- DROP TABLE IF EXISTS public.vehicleinfo;
+
+CREATE TABLE IF NOT EXISTS public.vehicleinfo
+(
+    id integer NOT NULL DEFAULT nextval('vehicle_id_seq'::regclass),
+    iot_connected boolean,
+    battery_percentage integer,
+    drive_mode character varying(50) COLLATE pg_catalog."default",
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone,
+    imei character varying(50) COLLATE pg_catalog."default",
+    ambient_temp character varying(50) COLLATE pg_catalog."default",
+    battery_current character varying(50) COLLATE pg_catalog."default",
+    battery_efficiency character varying(50) COLLATE pg_catalog."default",
+    battery_health character varying(50) COLLATE pg_catalog."default",
+    battery_temp character varying(50) COLLATE pg_catalog."default",
+    battery_usage character varying(50) COLLATE pg_catalog."default",
+    battery_vital_score character varying(50) COLLATE pg_catalog."default",
+    behavior_acceleration character varying(50) COLLATE pg_catalog."default",
+    behavior_breaking character varying(50) COLLATE pg_catalog."default",
+    behavior_last_updated timestamp with time zone,
+    behavior_overspeed character varying(50) COLLATE pg_catalog."default",
+    charge_cycles character varying(50) COLLATE pg_catalog."default",
+    co2_saved numeric,
+    controller_temp character varying(50) COLLATE pg_catalog."default",
+    distance_to_empty character varying(50) COLLATE pg_catalog."default",
+    est_resale_val character varying(50) COLLATE pg_catalog."default",
+    fuel_saved numeric,
+    last_seen_at timestamp with time zone,
+    latitude numeric,
+    lease_start_reading character varying(50) COLLATE pg_catalog."default",
+    location_last_updated timestamp with time zone,
+    longitude numeric,
+    motor_temp character varying(50) COLLATE pg_catalog."default",
+    remaining_battery_capacity character varying(50) COLLATE pg_catalog."default",
+    resale_val_comparison character varying(50) COLLATE pg_catalog."default",
+    total_battery_capacity character varying(50) COLLATE pg_catalog."default",
+    total_energy numeric,
+    vehicle_condition character varying(50) COLLATE pg_catalog."default",
+    vehicle_efficiency character varying(50) COLLATE pg_catalog."default",
+    charging boolean,
+    last_speed integer,
+    max_speed integer,
+    stops_for_the_day character varying(50) COLLATE pg_catalog."default",
+    total_operational_hours numeric,
+    battery_voltage character varying(50) COLLATE pg_catalog."default",
+    distance_travelled_today numeric,
+    total_odometer numeric,
+    vehicle_id character varying(50) COLLATE pg_catalog."default",
+    daily_avg_speed numeric,
+    daily_speed_count integer,
+    monthly_runtime numeric,
+    monthly_distance_travelled numeric,
+    latitude_direction character(1) COLLATE pg_catalog."default",
+    longitude_direction character(1) COLLATE pg_catalog."default",
+    daily_odometer_start numeric,
+    additional_fields character varying(50) COLLATE pg_catalog."default",
+    averagebatterytemp numeric,
+    totalchargecurrent numeric,
+    totalchargecurrentathightemperature numeric,
+    totaldischargecurrent numeric,
+    totaldischargecurrentathightemperature numeric,
+    CONSTRAINT vehicle_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.vehicleinfo
+    OWNER to postgres;

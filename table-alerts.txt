@@ -1,0 +1,30 @@
+-- Table: public.alerts
+
+-- DROP TABLE IF EXISTS public.alerts;
+
+CREATE TABLE IF NOT EXISTS public.alerts
+(
+    id integer NOT NULL DEFAULT nextval('alerts_id_seq'::regclass),
+    alert_type character varying(50) COLLATE pg_catalog."default",
+    vehicle_id character varying(50) COLLATE pg_catalog."default",
+    message text COLLATE pg_catalog."default",
+    value character varying(50) COLLATE pg_catalog."default",
+    status character varying(20) COLLATE pg_catalog."default",
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone,
+    latitude character varying(50) COLLATE pg_catalog."default",
+    latitude_direction character(1) COLLATE pg_catalog."default",
+    longitude character varying(50) COLLATE pg_catalog."default",
+    longitude_direction character(1) COLLATE pg_catalog."default",
+    severity character varying(20) COLLATE pg_catalog."default",
+    service_request_id character varying(50) COLLATE pg_catalog."default",
+    date_value timestamp with time zone,
+    freshdesk_ticket_id character varying(50) COLLATE pg_catalog."default",
+    threshold_id character varying(50) COLLATE pg_catalog."default",
+    CONSTRAINT alerts_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.alerts
+    OWNER to postgres;

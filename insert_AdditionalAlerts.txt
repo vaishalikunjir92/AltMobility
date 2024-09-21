@@ -1,0 +1,19 @@
+INSERT INTO additionalalerts (
+    id,
+    insurance_provider_issuer,
+    due_date,
+    renewal_status,
+    time_due,
+    policy_number,
+    offline_days,
+    idle_days,
+    min_cell_voltage,
+    last_soc,
+    last_seen,
+    days_since,
+    alert_id
+) VALUES
+    (1, 'Royal Sundaram General Insurance Co. Limited', '2024-08-08', true, 1, 'VGC0987155000100', NULL, NULL, NULL, NULL, NULL, NULL, 326254),
+    (2, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, 329056),
+    (3, NULL, NULL, NULL, NULL, NULL, NULL, 5180, 0, 0, NULL, NULL, 328583),
+    (4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 51.1, NULL, '2024-09-04 12:43:56', 0, 340981);

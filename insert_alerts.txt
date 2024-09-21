@@ -1,0 +1,23 @@
+INSERT INTO alerts (
+    id,
+    alert_type,
+    vehicle_id,
+    message,
+    value,
+    status,
+    created_at,
+    updated_at,
+    latitude,
+    latitude_direction,
+    longitude,
+    longitude_direction,
+    severity,
+    service_request_id,
+    date_value,
+    freshdesk_ticket_id,
+    threshold_id
+) VALUES
+    (326254, 'InsuranceRenewal', 'AB93EF6RFPB545339', 'Insurance Expiry', '2024-08-08', 'resolved', '2024-08-06 11:47:25.349+05:30', '2024-09-04 22:13:47.162+05:30', NULL, NULL, NULL, NULL, 'Normal', NULL, '2024-08-08 00:00:00+05:30', NULL, NULL),
+    (329056, 'VehicleOffline', 'AB93EF6RFPB545339', 'Vehicle Offline', '2024-08-27', 'active', '2024-08-29 19:50:17.827+05:30', '2024-08-29 19:50:17.827+05:30', NULL, NULL, NULL, NULL, 'Normal', NULL, '2024-08-27 14:15:32.679+05:30', NULL, NULL),
+    (328583, 'DeepDischarge', 'AB93EF6RFPB545339', 'Vehicle In Deep Discharge', '2010-06-21', 'resolved', '2024-08-27 19:05:18.585+05:30', '2024-08-27 19:30:20.81+05:30', NULL, NULL, NULL, NULL, 'Normal', NULL, '2010-06-21 14:12:21.909+05:30', NULL, NULL),
+    (340981, 'LowCharge', 'AB93EF6RFPB545339', 'Low Battery', '9%', 'resolved', '2024-09-04 18:15:02.595+05:30', '2024-09-04 18:51:04.894+05:30', NULL, NULL, NULL, NULL, 'Normal', NULL, '2024-09-04 12:43:56.017+05:30', NULL, NULL);
