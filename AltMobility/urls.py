@@ -21,4 +21,7 @@ from django.urls import path, include
 urlpatterns = [
 
     path('admin/', admin.site.urls),
+     # Add API routes
+    path('api/', include('alt_mobility_api_app.urls')),  # All API URLs from `your_app/urls.py` will be prefixed with `/api/`
+
 ]

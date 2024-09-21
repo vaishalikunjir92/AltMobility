@@ -10,3 +10,4 @@ class TelematicsData(models.Model):
 
     def __str__(self):
         return f"Device {self.device_id} @ {self.timestamp}"
+    

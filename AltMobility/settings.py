@@ -31,9 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'daphne',
-    'data_ingestion_app',
+    'rest_framework',
     'channels',
+    'alt_mobility_api_app',
+   
+    'data_ingestion_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,3 +130,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # New configuration for ALTMobility
 ASGI_APPLICATION = 'AltMobility.asgi.application'
+# In-memory channel layer (for real-time notifications)
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
