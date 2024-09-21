@@ -17,6 +17,9 @@ class AdditionalInfoDataViewSet(viewsets.ModelViewSet):
     queryset = AdditionalAlert.objects.all()
     serializer_class = AdditinalDataSerializer
 
+
+
+
 def classify_and_prioritize(vehicle_data):
     if vehicle_data.speed > 120 or vehicle_data.engine_temp > 100:
         vehicle_data.priority = 'critical'
@@ -37,13 +40,13 @@ def detect_anomalies(vehicle_data):
 @shared_task
 def send_notification(message):
     # Logic to send notification (e.g., email, SMS, push notification)
-    
+
     print(f"Notification: {message}")
 
 
 
 
 def dashboard(request):
-    data = VehicleData.objects.all()
+    data = VehicleInfo.objects.all()
     context = {'data': data}
     return render(request, 'dashboard.html', context)
