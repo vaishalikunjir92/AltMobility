@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'channels',
     'alt_mobility_api_app',
-   
     'data_ingestion_app',
     'django.contrib.admin',
     'django.contrib.auth',
