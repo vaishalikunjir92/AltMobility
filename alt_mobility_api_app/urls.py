@@ -4,7 +4,9 @@ from .views import VehicleDataViewSet  # Import your viewset here
 
 # Create a router for DRF viewsets
 router = DefaultRouter()
-router.register(r'vehicle-data', VehicleDataViewSet)  # Example API endpoint
+router.register(r'vehicle-data', VehicleDataViewSet)
+
+
 
 # Define the app-specific URLs
 urlpatterns = [
