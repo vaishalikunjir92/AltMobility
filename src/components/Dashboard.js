@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import AlertsBox from './AlertsBox'; // Make sure to import the AlertsBox component
 import AlertsGraph from './AlertsGraph';
+import './Dashboard.css';
 
 const calculateAlerts = (alerts) => {
   const currentTime = new Date();
@@ -67,7 +68,7 @@ const Dashboard = () => {
         <AlertsBox data={criticalMetrics} title="Critical Alerts" />
         <AlertsGraph alertsPerSecond={criticalMetrics.alertsPerSecond} title="Critical Alerts Over Last 60 Seconds" />
       </div>
-      <div className="alerts-column">  
+      <div className="alerts-column">
         <AlertsGraph alertsPerSecond={nonCriticalMetrics.alertsPerSecond} title="Non-Critical Alerts Over Last 60 Seconds" />
         <AlertsBox data={nonCriticalMetrics} title="Non-Critical Alerts" />
       </div>
