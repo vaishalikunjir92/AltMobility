@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import AlertDetailModal from './AlertDetailModal';
 import './Alerts.css';
 
-
 // Sample alert data
 const alertsData = [
   {
@@ -23,7 +22,7 @@ const alertsData = [
     value: "27-08-2024",
     status: "active",
     created_at: "2024-08-29 19:50:17.827 +0530",
-    severity: "Normal",
+    severity: "Critical",
   },
   {
     id: 328583,
@@ -43,32 +42,77 @@ const alertsData = [
     value: "9%",
     status: "resolved",
     created_at: "2024-09-04 18:15:02.595 +0530",
-    severity: "Normal",
+    severity: "Critical",
   }
 ];
 
 const Alerts = () => {
   const [selectedAlert, setSelectedAlert] = useState(null);
+  const [filter, setFilter] = useState("critical");
 
   const handleAlertClick = (alert) => {
     setSelectedAlert(alert);
   };
 
+  const handleFilterChange = (type) => {
+    setFilter(type);
+  };
+
+  // Custom classification based on alert_type
+  const classifyAlert = (alert) => {
+    switch (alert.alert_type) {
+      case "InsuranceRenewal":
+        return "non-critical-green";
+      case "LowCharge":
+        return "critical-yellow";
+      case "VehicleOffline":
+        return "critical-orange";
+      case "DeepDischarge":
+        return "critical-red";
+      default:
+        return alert.severity === "Critical" ? "critical" : "non-critical";
+    }
+  };
+
+  const filteredAlerts = alertsData.filter(alert => {
+    if (filter === "critical") {
+      // Ensure 'InsuranceRenewal' does not appear under critical even if its severity is 'Normal'
+      return classifyAlert(alert).includes("critical") && alert.alert_type !== "InsuranceRenewal";
+    } else if (filter === "non-critical") {
+      return classifyAlert(alert).includes("non-critical");
+    }
+    return true;
+  });
+
   return (
     <div className="alerts">
       <h2>Real-Time Alerts</h2>
+
+      {/* Navigation buttons */}
+      <div className="alert-nav">
+        <button onClick={() => handleFilterChange("critical")} className={filter === "critical" ? "active" : ""}>
+          Critical
+        </button>
+        <button onClick={() => handleFilterChange("non-critical")} className={filter === "non-critical" ? "active" : ""}>
+          Non-Critical
+        </button>
+      </div>
+
       <ul>
-        {alertsData.map(alert => (
+        {filteredAlerts.map(alert => (
           <li key={alert.id} onClick={() => handleAlertClick(alert)}>
-            <span className={`severity ${alert.severity.toLowerCase()}`}>{alert.severity}</span>
-            <span>{alert.message}</span> - Vehicle ID: {alert.vehicle_id}
+            <span className={`alert-tag ${classifyAlert(alert)}`}>{alert.alert_type}</span>
+            <span >{alert.message}</span> - Vehicle ID: {alert.vehicle_id}
+
           </li>
         ))}
       </ul>
-
-      {selectedAlert && <AlertDetailModal alert={selectedAlert} close={() => setSelectedAlert(null)} />}
+        <div className="goat">
+     {selectedAlert && <AlertDetailModal alert={selectedAlert} close={() => setSelectedAlert(null)} />}
+      </div>
     </div>
   );
 };
 
 export default Alerts;
+
