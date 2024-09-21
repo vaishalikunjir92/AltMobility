@@ -1,22 +1,26 @@
 .sidebar {
-    width: 200px;
-    background-color: #f8f9fa;
+    display: flex; /* Use flexbox for horizontal layout */
     padding: 15px;
-    height: calc(100vh - 70px); /* Adjust based on header height */
+    height: 70px; /* Set fixed height */
     position: fixed;
+    width: 100%; /* Make it full width */
+    top: 0; /* Position at the top */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
 }
 
 .sidebar ul {
+    display: flex; /* Arrange list items in a row */
     list-style-type: none;
     padding: 0;
+    margin: 0; /* Remove default margin */
 }
 
 .sidebar li {
-    padding: 10px;
+    padding: 10px 20px; /* Add padding for better spacing */
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .sidebar li:hover {
-    background-color: #e2e6ea;
+    background-color: #e2e6ea; /* Retain hover effect */
 }

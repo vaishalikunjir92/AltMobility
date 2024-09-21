@@ -56,4 +56,18 @@
   .alerts .alert-nav button.active {
     background-color: #e0e0e0;
   }
+
+  .alerts {
+    position: relative; /* To position the child relative to this container */
+  }
+  
+  .goat {
+    position: absolute;
+    right: 0; /* Align to the right side */
+    top: 40;   /* Optionally align it at the top */
+    /* border: #000000 solid; */
+    padding: 40px;
+    background-color: #00f200;
+    border-radius: 20px;
+  }
   
