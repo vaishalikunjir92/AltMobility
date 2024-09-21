@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'AltMobility.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'AltMobility',  # The name of the new database you created
+        'USER': 'postgres',  # The PostgreSQL user (default is 'postgres')
+        'PASSWORD': 'root',  # Your PostgreSQL password
+        'HOST': 'localhost',  # Or the IP address if the DB is on a different server
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
 
