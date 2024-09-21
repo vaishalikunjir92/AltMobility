@@ -1,46 +1,30 @@
-const alerts = [
-    {
-        "id": 326254,
-        "alert_type": "InsuranceRenewal",
-        "vehicle_id": "AB93EF6RFPB545339",
-        "message": "Insurance Expiry",
-        "value": "2024/08/08",
-        "status": "resolved",
-        "created_at": "2024-08-06 11:47:25.349 +0530",
-        "updated_at": "2024-09-04 22:13:47.162 +0530",
-        "additional_fields": {
-            "insurance_provider": {
-                "insurer": "Royal Sundaram General Insurance Co. Limited"
-            },
-            "due_date": "2024-08-08T00:00:00.000Z",
-            "renewal_status": true,
-            "time_due": 1,
-            "policy_number": "VGC0987155000100"
-        },
-        "latitude": "",
-        "latitude_direction": "",
-        "longitude": "",
-        "longitude_direction": "",
-        "severity": "Normal",
-        "service_request_id": "",
-        "date_value": "2024-08-08 00:00:00.000",
-        "freshdesk_ticket_id": "",
-        "threshold_id": ""
-    }
-];
+import { GENERATE_CRITICAL_ALERT } from "../constants/actionTypes";
 
-const initialState = alerts;
-
-export default (criticalAlerts = initialState, action) => {
+export default (criticalAlerts = [], action) => {
     switch (action.type) {
-        // Handle your specific actions here, e.g.:
-        // case 'ADD_ALERT':
-        //     return [...criticalAlerts, action.payload];
-        
-        // case 'REMOVE_ALERT':
-        //     return criticalAlerts.filter(alert => alert.id !== action.payload.id);
-        
+        case GENERATE_CRITICAL_ALERT: {
+            const { alert } = action.payload;
+            const { alert_type, vehicle_id } = alert;
+            let existingAlert;
+
+            // Filter out any existing alerts for the same vehicle id
+            let updatedAlerts = criticalAlerts.filter(
+                existingAlerts => {
+                    if ( existingAlerts.vehicle_id !== vehicle_id )
+                        return existingAlerts;
+                    existingAlert = existingAlerts;
+                }
+            );
+
+            if ( (alert_type === "LowCharge" && existingAlert.alert_type === "VehicleOffline") || (alert_type === "VehicleOffline" && existingAlert.alert_type === "LowChargeVehicleOffline") ) {
+                existingAlert.status = "Resolved";
+                return [alert, existingAlert, ...updatedAlerts];
+            }
+
+            // Return the updated state with the new alert added
+            return [alert, ...updatedAlerts];
+        }
         default:
-            return criticalAlerts; // Return current state if no action matches
+            return criticalAlerts;
     }
 };

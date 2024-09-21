@@ -1,27 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
-import Alerts from './components/Alerts'; // Assuming you have this component
-import Reports from './components/Reports';
-import Settings from './components/Settings';
+import Alerts from './components/Alerts';
 import './App.css'; // For overall styling
-import VehicleStatus from './components/VehicleStatus';
+import generateAlert from './actions/generateAlert';
 
 const App = () => {
   const [page, setPage] = useState('dashboard');
-  /*useEffect(() => {
-    const socket = new WebSocket('ws://your-websocket-url');
+  useEffect(() => {
+    const socket = new WebSocket('ws://127.0.0.1:8000/api/alerts-data/');
 
     socket.onmessage = (event) => {
       const newAlert = JSON.parse(event.data);
-      setAlerts((prevAlerts) => [...prevAlerts, newAlert]);
+      generateAlert(newAlert);
     };
 
     return () => {
       socket.close();
     };
-  }, []);*/
+  }, []);
 
   const renderPage = () => {
     switch (page) {
@@ -29,14 +27,6 @@ const App = () => {
         return <Dashboard />;
       case 'alerts':
         return <Alerts />;
-      case 'reports':
-        return <Reports />;
-        case 'vehicles':
-        return <VehicleStatus />;
-      case 'settings':
-        return <Settings />;
-      
-      // Add other pages (vehicles, settings)
       default:
         return <Dashboard />;
     }
